@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=B612+Mono:wght@400;700&family=B612:wght@400;700&display=swap');
+
+:root {
+    --light-green: #00e626;
+    --light-yellow: gold;
+    --light-red: #ff5e00;
+    --light-off: #333333;
+}
+
+@keyframes blink {
+    from {
+        color: var(--light-off);
+    }
+    to {
+        color: var(--light-green);
+    }
+}
+
+body {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-rows: auto; */
+    grid-template-rows: 10% 60% 20% 10%;
+    grid-template-areas:
+        "h h h"
+        "ml mc mr"
+        "fl fc fr"
+        "f f f";
+
+    /* font-family: 'Open Sans', sans-serif; */
+    font-family: 'B612', sans-serif;
+}
+
+button {
+    font-size: 5em;
+    line-height: 100%;
+
+    & iconify-icon {
+        font-size: 1em;
+    }
+}
+
+header {
+    grid-area: h;
+}
+footer {
+    grid-area: f;
+}
+
+body.night {
+    background-color: black;
+    color: darkgray;
+
+    .input-group {
+        font-size: 5em;
+        color: var(--light-yellow);
+
+        input[type=number] {
+            background-color: #333333;
+            font-family: 'B612 Mono';
+            font-size: 100%;
+            color: var(--light-yellow);
+            text-align: right;
+            border: none;
+            border-radius: 0.25em;
+        }
+    }
+}
+
+.check-icon {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    & input[type=checkbox] {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0.0;
+    }
+}
+
+circle-progress {
+    &::part(base) {
+        transform: scale(6.0);
+    }
+    &::part(circle) {
+        stroke: var(--light-off);
+        /* stroke-width: 0.5em; */
+    }
+    &::part(value) {
+        stroke: var(--light-yellow);
+        stroke-linecap: round;
+        /* stroke-width: 1em; */
+    }
+    &::part(text) {
+        font-family: 'B612';
+        fill: var(--light-yellow);
+    }
+}
+
+.check-icon-redgreen {
+    & input[type=checkbox] ~ iconify-icon {
+        color: var(--light-green);
+    }
+    & input[type=checkbox]:checked ~ iconify-icon {
+        color: var(--light-red);
+    }
+    & input[type=checkbox][disabled] ~ iconify-icon {
+        color: var(--light-red);
+    }
+
+    &.inverted {
+        & input[type=checkbox] ~ iconify-icon {
+            color: var(--light-red);
+        }
+        & input[type=checkbox]:checked ~ iconify-icon {
+            color: var(--light-green);
+        }
+        & input[type=checkbox][disabled] ~ iconify-icon {
+            color: var(--light-green);
+        }
+    }
+}
+
+.check-icon-grey {
+    & input[type=checkbox] ~ iconify-icon {
+        color: var(--light-off);
+    }
+    & input[type=checkbox]:checked ~ iconify-icon {
+        color: var(--light-green);
+    }
+    & input[type=checkbox][disabled] ~ iconify-icon {
+        color: var(--light-green);
+    }
+}
+
+.check-icon.blink {
+    animation-name: blink;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.display {
+    color: var(--light-yellow);
+}
+
+iconify-icon {
+    font-size: 5em;
+    margin: 0 auto;
+}
+header h1, h2 {
+    font-weight: normal;
+    font-size: 1.5em;
+    line-height: 1em;
+    text-align: center;
+}
+
+body.preflight {
+    #midair, #landed {
+        display: none;
+    }
+}
+body.departed {
+    #preflight, #landed {
+        display: none;
+    }
+}
+body.landed {
+    #preflight, #midair {
+        display: none;
+    }
+}
+
+center-panel {
+    grid-area: mc;
+}
+#preflight {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+#midair {
+    text-align: center;
+    padding: auto 0;
+}
+#landed {
+    text-align: center;
+    font-size: 5em;
+}
+#left {
+    grid-area: ml;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+#right {
+    grid-area: mr;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+#info-signs {
+    grid-area: fc;
+    text-align: center;
+    padding: auto 0;
+
+    font-size: 2em;
+}
+
+.progress-circle {
+    & svg, & circle {
+        width: 220px;
+        height: 220px;
+    }
+    & circle {
+        position: absolute;
+        fill: none;
+        stroke-width: 10;
+        transform: translate(10px, 10px); /* This is to position it in the center */
+        /* stroke-dasharray: 440; */
+        stroke-linecap: round;
+    }
+    & circle:nth-child(1) {
+        stroke-dashoffset: 0;
+        stroke: lightgrey;
+    }
+    & circle:nth-child(2) {
+        /* stroke-dashoffset: calc(440 - (440 * 80) / 100); */
+        stroke: black;
+        transition-property: stroke-dashoffset;
+    }
+
+    & div.label {
+        position: relative;
+    }
+
+    & div.label span {
+        font-size: 2em;
+    }
+}

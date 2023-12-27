@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="examcockpit.css">
+    <script src="https://code.iconify.design/iconify-icon/1.0.8/iconify-icon.min.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/js-circle-progress/dist/circle-progress.min.js" type="module"></script> -->
+    <script src="circle-progress.min.js" type="module"></script>
+    <script src="examcockpit.js"></script>
+</head>
+<body class="preflight night">
+    <header>
+        <h1 contenteditable><!--style="display: flex; justify-content: space-between;">-->
+            <span class="left">Tools and Methods of Data Analysis</span>
+            <span class="center">WS 2023/24</span>
+            <span class="right">Lecturer: Niels Hoppe</span>
+        </h1>
+        <h2 contenteditable><!--style="display: flex; justify-content: space-between;">-->
+            <span class="left">Written Examination (90 min.)</span>
+            <span class="right">on December 8, 2023</span>
+        </h2>
+    </header>
+    
+    <div id="left">
+        <iconify-icon icon="material-symbols:flight-takeoff"></iconify-icon>
+        <span id="starttime" class="display" style="font-size: 2em;">--:--</span>
+        <span class="label">Start / Scheduled</span>
+    </div>
+
+    <div id="right">
+        <iconify-icon icon="material-symbols:flight-land"></iconify-icon>
+        <span id="endtime" class="display" style="font-size: 2em;">--:--</span>
+        <span>End</span>
+    </div>
+
+    <center-panel id="preflight">
+        <!-- <iconify-icon icon="mdi:airplane-clock"></iconify-icon> -->
+        <iconify-icon icon="material-symbols:av-timer"></iconify-icon>
+        <div class="input-group">
+            <input type="number" min="1" max="720" id="duration">
+            <span class="display">min.</span>
+        </div>
+        <br>
+        <span class="label">Duration</span>
+        <button id="btn-start">
+            <iconify-icon icon="mdi:play"></iconify-icon>
+            Start
+        </button>
+    </center-panel>
+
+    <center-panel id="midair">
+        <circle-progress value="90" max="90" id="progress"></circle-progress>
+    </center-panel>
+
+    <center-panel id="landed">
+        <p class="display">
+            Time is up.<br>
+            Pass examp papers to aisle for collection.
+        </p>
+    </center-panel>
+    
+    <div id="info-signs">
+        <div class="check-icon check-icon-redgreen">
+            <input type="checkbox" id="wc_occupied">
+            <iconify-icon icon="material-symbols:wc"></iconify-icon>
+        </div>
+        <!-- <span>vacant / occupied</span> -->
+
+        <div class="check-icon check-icon-grey">
+            <input type="checkbox" name="seatbelt" id="seatbelt">
+            <iconify-icon icon="mdi:seatbelt"></iconify-icon>
+        </div>
+
+        <div class="check-icon check-icon-redgreen inverted">
+            <input type="checkbox" id="submissions_accepted">
+            <iconify-icon icon="material-symbols:file-save-outline"></iconify-icon>
+            <!-- <iconify-icon icon="material-symbols:file-save-off-outline"></iconify-icon> -->
+        </div>
+    </div>
+
+    <div style="grid-area: fr; text-align: center;">
+        <div class="check-icon check-icon-grey">
+            <input type="checkbox" id="theme-night" checked>
+            <iconify-icon icon="material-symbols:dark-mode-outline"></iconify-icon>
+        </div>
+
+        <div class="check-icon check-icon-grey">
+            <input type="checkbox" id="btn-settings">
+            <iconify-icon icon="mdi:notebook-outline"></iconify-icon>
+        </div>
+        <div class="check-icon check-icon-grey">
+            <input type="checkbox" id="btn-announce">
+            <iconify-icon icon="material-symbols:record-voice-over-outline"></iconify-icon>
+        </div>
+    </div>
+
+    <footer>
+        <p>
+            <strong>Exam Cockpit</strong> by <a href="http://www.nielshoppe.de" target="_blank">Niels Hoppe</a>
+            Built with <a href="https://github.com/tigrr/circle-progress">Circle Progress</a>.
+            GitHub
+        </p>
+    </footer>
+</body>
+</html>
