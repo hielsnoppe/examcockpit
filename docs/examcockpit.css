@@ -18,19 +18,39 @@
 }
 
 body {
-    display: grid;
-    height: 100%;
-    grid-template-columns: repeat(3, 1fr);
-    /* grid-template-rows: auto; */
-    grid-template-rows: 10% 60% 20% 10%;
-    grid-template-areas:
-        "h h h"
-        "ml mc mr"
-        "fl fc fr"
-        "f f f";
-
     /* font-family: 'Open Sans', sans-serif; */
     font-family: 'B612', sans-serif;
+    display: grid;
+    height: 100%;
+
+    & * {}
+
+    @media (min-width: 500px) and (max-width: 999px) {
+
+        grid-template-columns: repeat(2, 1fr);
+        /* grid-template-rows: auto; */
+        grid-template-rows: 10% 15% 45% 10% 10% 10%;
+        grid-template-areas:
+            "h h"
+            "ml mr"
+            "mc mc"
+            "fc fc"
+            "fl fr"
+            "f f";
+    }
+
+    @media (min-width: 1000px) {
+
+        grid-template-columns: repeat(3, 1fr);
+        /* grid-template-rows: auto; */
+        /* grid-template-rows: 10% 65% 20% 5%; */
+        grid-template-rows: auto 3fr 1fr auto;
+        grid-template-areas:
+            "h h h"
+            "ml mc mr"
+            "fl fc fr"
+            "f f f";
+    }
 }
 
 button {
@@ -84,6 +104,7 @@ body.night {
 }
 
 circle-progress {
+    margin-top: 50%;
     &::part(base) {
         transform: scale(6.0);
     }

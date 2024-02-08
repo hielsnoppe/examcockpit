@@ -1,3 +1,5 @@
+// import './data.js';
+
 // import CircleProgress from './circle-progress.min.js'
 
 const msh = 1000 * 60 * 60;
@@ -19,11 +21,11 @@ const formatDuration = (milliseconds) => {
     if (milliseconds <= 0) return '00:00:00';
 
     let ms = milliseconds;
-    h = Math.floor(ms / msh)
+    const h = Math.floor(ms / msh)
     ms = ms - h * msh;
-    m = Math.floor(ms / msm);
+    const m = Math.floor(ms / msm);
     ms = ms - m * msm;
-    s = Math.floor(ms / mss);
+    const s = Math.floor(ms / mss);
 
     return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0': '') + m + ':' + (s < 10 ? '0' : '') + s;
 }
@@ -102,7 +104,7 @@ function onLoad () {
     }
 
     function checkFlightplan (remaining, percent) {
-        console.log(remaining, percent);
+        
         const current = flightplan[step];
         if (!current) return;
 
