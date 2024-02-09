@@ -37,7 +37,7 @@ const formatDate = (milliseconds) => {
 function onLoad () {
 
     var flightinfo = {
-        scheduled: (new Date(2023, 12-1, 8, 14, 0, 0)).getTime(),
+        scheduled: (new Date(2024, 2-1, 9, 10, 0, 0)).getTime(),
         duration: 90 * units.minutes,
         pilot: 'Niels Hoppe',
         title: 'Tools and Methods of Data Analysis',
